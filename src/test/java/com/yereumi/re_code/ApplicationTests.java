@@ -15,7 +15,7 @@ class ApplicationTests {
 
 	@Container
 	@ServiceConnection
-	static MySQLContainer<?> mysql = new MySQLContainer<>("mysql:latest");
+	static MySQLContainer<?> mysql = new MySQLContainer<>("mysql:8.0");
 
 	@Test
 	void contextLoads() {
