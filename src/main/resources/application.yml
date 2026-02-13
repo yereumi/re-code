@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: Asia/Seoul
+
+  sql:
+    init:
+      mode: never
+
+---
+spring:
+  config:
+    import: classpath:application-dev.properties
+    activate:
+      on-profile: dev
+
+---
+spring:
+  config:
+    import: classpath:application-prod.properties
+    activate:
+      on-profile: prod
